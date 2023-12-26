@@ -88,6 +88,13 @@
    colcon build --packages-select 'your_package'
    ```
 
+4. Run specific package using the following command
+
+   ```bach
+   cd install/{your_package}/lib/{your_package}/
+   ./{package_name}
+   ```
+
 ## Conclusion
 
 Congratulations! You have successfully installed and set up ROS2, as well as built and run your project. You can now [provide any additional information or next steps for the user].
