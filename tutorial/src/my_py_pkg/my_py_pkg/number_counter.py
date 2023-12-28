@@ -3,6 +3,7 @@
 import rclpy
 from rclpy.node import Node
 from example_interfaces.msg import Int64
+from example_interfaces.srv import SetBool
 
 class NumberCountNode(Node):
 
@@ -16,8 +17,17 @@ class NumberCountNode(Node):
 
     self.number_subscriber_ = self.create_subscription(Int64, 'number', self.callback_number, 10)
 
+    self.reset_counter_service_ = self.create_service(SetBool, 'reset_counter', self.callback_reset_counter)
+
 
     self.get_logger().info('Number Counter has been started')
+
+  def callback_reset_counter(self, request, response):
+    self.counter_ = 0
+    response.success = True
+    response.message = 'Counter has been reset'
+    return response
+
 
   def callback_number(self, msg):
     self.counter_ += msg.data
