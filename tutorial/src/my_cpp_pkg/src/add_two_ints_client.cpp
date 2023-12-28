@@ -7,7 +7,6 @@ public:
   AddTwoIntsClientNode() : Node("add_two_ints_client")
   {
 
-    // callAddTwoIntsService(1, 2);
     thread1_ = std::thread(std::bind(&AddTwoIntsClientNode::callAddTwoIntsService, this, 1, 2));
 
     RCLCPP_INFO(this->get_logger(), "Client Node Started");
